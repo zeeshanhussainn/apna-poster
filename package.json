@@ -4,6 +4,8 @@
   "type": "module",
   "main": "server.js",
   "scripts": {
+    "install": "cd Client && npm install",
+    "build": "cd Client && npm run build",
     "start": "node server.js"
   },
   "dependencies": {
