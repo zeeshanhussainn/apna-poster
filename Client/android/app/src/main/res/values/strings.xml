@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">apna-poster</string>
+    <string name="title_activity_main">apna-poster</string>
+    <string name="package_name">com.apnaposter.app</string>
+    <string name="custom_url_scheme">com.apnaposter.app</string>
+</resources>

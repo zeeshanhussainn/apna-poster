@@ -14,9 +14,11 @@
     "npm": "9.x"
   },
   "dependencies": {
+    "@capacitor/android": "^7.4.3",
+    "@capacitor/cli": "^7.4.3",
+    "@capacitor/core": "^7.4.3",
     "@emotion/is-prop-valid": "^1.2.1",
     "@radix-ui/react-alert-dialog": "^1.0.5",
-
     "@radix-ui/react-avatar": "^1.0.3",
     "@radix-ui/react-checkbox": "^1.0.4",
     "@radix-ui/react-dialog": "^1.0.5",
