@@ -34,7 +34,7 @@ const PremiumPage = () => {
       // const order = typeof data === "string" ? JSON.parse(data) : data;
 
 
-      const res = await fetch("http://localhost:5000/create-order", {
+      const res = await fetch("https://apna-poster.onrender.com/create-order", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
       });
@@ -118,7 +118,7 @@ const PremiumPage = () => {
         description: "Lifetime Premium Membership",
         order_id: order.id,
         handler: async (response) => {
-          const verifyRes = await fetch("http://localhost:5000/verify-payment", {
+          const verifyRes = await fetch("https://apna-poster.onrender.com/verify-payment", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(response),
