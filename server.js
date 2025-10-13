@@ -83,7 +83,7 @@ const __dirname = path.resolve();
 const buildPath = path.join(__dirname, "dist"); // Vite output
 app.use(express.static(buildPath));
 
-app.get("*", (req, res) => {
+app.get("/*", (req, res) => {
   res.sendFile(path.join(buildPath, "index.html"));
 });
 
