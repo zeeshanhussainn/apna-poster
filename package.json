@@ -4,18 +4,16 @@
   "type": "module",
   "main": "server.js",
   "scripts": {
-    "install": "cd Client && npm install",
-    "build": "cd Client && npm run build",
+    "build": "cd Client && npm install && npm run build && move dist ..",
     "start": "node server.js"
   },
   "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^17.2.3",
     "express": "^5.1.0",
+    "dotenv": "^17.2.3",
+    "cors": "^2.8.5",
     "razorpay": "^2.9.6"
   },
   "devDependencies": {
-    "supabase": "^2.47.2",
-    "vite": "^7.1.10"
+    "supabase": "^2.47.2"
   }
 }
