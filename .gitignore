@@ -1,6 +1,9 @@
 # Ignore Node modules
 node_modules/
 
+# Ignore C;lient Node modules
+Client/node_modules/
+
 # Ignore environment files
 .env
 
