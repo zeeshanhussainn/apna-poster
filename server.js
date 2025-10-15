@@ -77,6 +77,7 @@ app.post("/verify-payment", async (req, res) => {
   }
 });
 
+    // // // // "build": "cd Client && npm install && npm run build && move dist ..",
 
 // Add **after all your API routes** and before `app.listen`
 const __dirname = path.resolve();

@@ -4,7 +4,6 @@
   "type": "module",
   "main": "server.js",
   "scripts": {
-    "build": "cd Client && npm install && npm run build && move dist ..",
     "start": "node server.js"
   },
   "dependencies": {
