@@ -5,8 +5,20 @@ const RAZORPAY_KEY_SECRET = Deno.env.get("RAZORPAY_KEY_SECRET")!;
 
 serve(async (req) => {
   try {
+    // 1️⃣ Handle preflight OPTIONS request for CORS
+    if (req.method === "OPTIONS") {
+      return new Response(null, {
+        headers: {
+          "Access-Control-Allow-Origin": "https://apna-poster.vercel.app", // your frontend URL
+          "Access-Control-Allow-Methods": "POST, OPTIONS",
+          "Access-Control-Allow-Headers": "Content-Type",
+        },
+      });
+    }
+
     const { action, userId, orderId, razorpay_payment_id, razorpay_signature } = await req.json();
 
+    // 2️⃣ Create Razorpay order
     if (action === "create-order") {
       const body = JSON.stringify({
         amount: 99 * 100, // ₹99 in paise
@@ -24,19 +36,40 @@ serve(async (req) => {
       });
 
       const data = await res.json();
+
       return new Response(JSON.stringify({ ...data, keyId: RAZORPAY_KEY_ID }), {
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "https://apna-poster.vercel.app",
+        },
       });
     }
 
-    // Verification logic can be added here (using Web Crypto HMAC)
+    // 3️⃣ Verify payment (HMAC verification can be implemented)
     if (action === "verify-payment") {
-      // Implement HMAC-SHA256 verification with Deno crypto.subtle
-      return new Response(JSON.stringify({ success: true }));
+      // TODO: Implement HMAC-SHA256 verification using Deno crypto.subtle
+      return new Response(JSON.stringify({ success: true }), {
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "https://apna-poster.vercel.app",
+        },
+      });
     }
 
-    return new Response(JSON.stringify({ error: "Invalid action" }), { status: 400 });
+    return new Response(JSON.stringify({ error: "Invalid action" }), {
+      status: 400,
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "https://apna-poster.vercel.app",
+      },
+    });
   } catch (error) {
-    return new Response(JSON.stringify({ error: error.message }), { status: 500 });
+    return new Response(JSON.stringify({ error: error.message }), {
+      status: 500,
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "https://apna-poster.vercel.app",
+      },
+    });
   }
 });
